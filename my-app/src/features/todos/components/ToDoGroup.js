@@ -9,7 +9,6 @@ function TodoGroup() {
     const todoIds = useSelector(selectTodoIds);
     return (
         <div>
-            List of To Do:
             {
                 // getAllTodoIds(initialTodoList).map((id) => (
                 //     <TodoItem key={id} itemId={id}/>
