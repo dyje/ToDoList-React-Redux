@@ -1,15 +1,20 @@
 import React, {useState} from 'react';
+import {useDispatch} from 'react-redux';
+import {AddToDo} from "..//reducers/ToDosSlice";
 
 function ToDoForm(){
     const [inputText, setText] = useState("");
+    const dispatch = useDispatch();
 
     function handleInputTextChange(event){
         setText(event.target.value);
-        console.log(event.target.value);
+        //console.log(event.target.value);
     }
 
     function handleInputTextAdd(){
-        console.log("Input text to be added: ", inputText);
+        //console.log("Input text to be added: ", inputText);
+        dispatch(AddToDo(inputText));
+        setText("");
     }
 
     return (
