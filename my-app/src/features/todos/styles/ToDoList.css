@@ -1,0 +1,18 @@
+body{
+   background-image: url('../styles/notebook.jpg');
+   background-size:fill;
+    text-align:center;
+ }
+
+ h1{
+    margin: 3px;
+    padding: 10px;
+    text-align: center;
+    font-family: Comic Sans MS;
+ }
+ .main{
+   border-style:solid;
+   border-color:darkturquoise;
+   background-color:indianred;
+ }
+
