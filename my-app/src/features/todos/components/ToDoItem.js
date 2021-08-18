@@ -1,9 +1,10 @@
 import React from 'react'
 // import {initialTodoList} from '../../../common/constants/constants';
 // import {getTodoById} from '../../../common/utils/utils';
-import {selectTodoById, ToggleToDo} from '../reducers/ToDosSlice';
+import {selectTodoById, ToggleToDo, RemoveToDo} from '../reducers/ToDosSlice';
 import {useSelector, useDispatch} from 'react-redux';
-import "../styles/items.css";
+import "../styles/ToDoItem.css";
+import {Button} from 'antd';
 
 function TodoItem(props) {
     const todo = useSelector(state => selectTodoById(state, props.itemId))
@@ -15,14 +16,18 @@ function TodoItem(props) {
         dispatch(ToggleToDo(props.itemId));
     }
 
-    function handleRemove(){
-
+    function handleRemove(event){
+        dispatch(RemoveToDo(props.itemId));
+        event.stopPropagation();
     }
     return (
         <div>
-            <ul>
-                <li onClick={handleToggle}><span className={doneStatus}>{todo.text}</span>
-                <span onClick={handleRemove}>X</span>
+            <ul className={doneStatus} 
+                onClick={handleToggle}>
+                <li>{todo.text}
+                <Button type='danger' className='removeBtn' onClick={handleRemove}>X
+                    {/* <span >X</span> */}
+                    </Button>
                 </li>
             </ul>
         </div>
