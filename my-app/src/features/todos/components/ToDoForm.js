@@ -3,6 +3,7 @@ import {useDispatch} from 'react-redux';
 import { createTodo } from '../../apis/todos';
 import {AddToDo} from "..//reducers/ToDosSlice";
 import {Button} from 'antd';
+import "../styles/ToDoForm.css";
 
 function ToDoForm(){
     const [inputText, setText] = useState("");
@@ -23,7 +24,7 @@ function ToDoForm(){
 
     return (
         <div>
-            <div>
+            <div className='input'>
             <input
                 type = "text"
                 placeholder = "Input new ToDo item"
