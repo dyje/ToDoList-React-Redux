@@ -22,14 +22,17 @@ function TodoItem(props) {
     }
     return (
         <div>
-            <ul className={doneStatus} 
-                onClick={handleToggle}>
-                <li>{todo.text}
-                <Button type='danger' className='removeBtn' onClick={handleRemove}>X
-                    {/* <span >X</span> */}
-                    </Button>
-                </li>
-            </ul>
+            <table> 
+                <ul className={doneStatus} 
+                    onClick={handleToggle}>
+                        <div className='list'> 
+                            <span>
+                            {todo.text}
+                            <Button type='danger' className='removeBtn' onClick={handleRemove}>X</Button>
+                            </span>
+                        </div>
+                </ul>
+            </table>
         </div>
     )
 }

@@ -1,0 +1,36 @@
+.done{
+    color: green;
+    text-decoration: line-through;
+    background-color: rgb(30, 253, 0);
+}
+
+ul li {
+    padding: 10px 10px ;
+    list-style-type: none;
+    
+  }
+  
+
+  ul li:hover {
+    
+    text-decoration: line-through;
+}
+
+table{
+  margin-left:auto;
+  margin-right:auto;
+}
+.removeBtn{
+  margin-left: 10px;
+  float: right;
+}
+
+.list{
+  border-style:solid;
+  width: 500px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: rgb(165, 226, 228);
+  font-family: 'Comic Sans MS';
+  font-size: 20px;
+}
