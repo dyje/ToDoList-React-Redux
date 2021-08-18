@@ -5,6 +5,7 @@ import {selectTodoById, ToggleToDo, RemoveToDo} from '../reducers/ToDosSlice';
 import {useSelector, useDispatch} from 'react-redux';
 import "../styles/ToDoItem.css";
 import {Button} from 'antd';
+import { deleteTodo } from '../../apis/todos';
 
 function TodoItem(props) {
     const todo = useSelector(state => selectTodoById(state, props.itemId))
@@ -17,7 +18,11 @@ function TodoItem(props) {
     }
 
     function handleRemove(event){
-        dispatch(RemoveToDo(props.itemId));
+        // dispatch(RemoveToDo(props.itemId));
+        // event.stopPropagation();
+        deleteTodo(props.itemId).then((response) => {
+            dispatch(RemoveToDo(response.data));
+        })
         event.stopPropagation();
     }
     return (

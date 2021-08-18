@@ -25,7 +25,7 @@ const todosSlice = createSlice({
               })
         },
         RemoveToDo(state,action){
-            todosAdapter.removeOne(state, action.payload);
+            todosAdapter.removeOne(state, action.payload.id);
         },
         AddToDos(state, action){
             todosAdapter.addMany(state, action.payload);
