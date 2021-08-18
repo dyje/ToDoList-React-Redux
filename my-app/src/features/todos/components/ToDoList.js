@@ -7,6 +7,7 @@ import { useDispatch } from 'react-redux';
 import { AddToDo, selectTodos } from '../reducers/ToDosSlice';
 import {AddToDos} from '../reducers/ToDosSlice';
 import '../styles/ToDoList.css';
+import {BarsOutlined} from '@ant-design/icons';
 
 function TodoList() {
 
@@ -22,7 +23,7 @@ function TodoList() {
         <body>
         <div className="main">
             <div>
-                <h1>To Do List:</h1>
+                <h1>To Do List: <BarsOutlined /></h1>
                 <ToDoForm/>
             </div>
             <div>
