@@ -10,13 +10,6 @@ function DoneList() {
 
     const doneItems = useSelector(doneitems);
     return (
-        // <div>
-        //     {
-        //         doneItems.map((doneItem) => (
-        //             <TodoItem key={doneItem.id} itemId={doneItem.id}/>
-        //         ))
-        //     }
-
         <body>
         <div className="main">
             <div>

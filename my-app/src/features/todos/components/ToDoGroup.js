@@ -10,9 +10,6 @@ function TodoGroup() {
     return (
         <div>
             {
-                // getAllTodoIds(initialTodoList).map((id) => (
-                //     <TodoItem key={id} itemId={id}/>
-                //     ))
                 todoIds.map((id) => (
                     <TodoItem key={id} itemId={id}/>
                 ))

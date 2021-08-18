@@ -11,14 +11,12 @@ function ToDoForm(){
     
     function handleInputTextChange(event){
         setText(event.target.value);
-        //console.log(event.target.value);
     }
 
     function handleInputTextAdd(){
         createTodo(inputText).then((response)=> {
             dispatch(AddToDo(response.data));
         })
-        //console.log("Input text to be added: ", inputText);
         setText("");
     }
 
