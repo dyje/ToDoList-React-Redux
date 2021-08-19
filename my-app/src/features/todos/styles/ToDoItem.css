@@ -21,6 +21,10 @@ table{
   margin-right:auto;
 }
 .removeBtn{
+  
+  float: right;
+}
+.editBtn{
   margin-left: 10px;
   float: right;
 }

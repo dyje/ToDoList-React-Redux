@@ -6,6 +6,7 @@ import {useSelector, useDispatch} from 'react-redux';
 import "../styles/ToDoItem.css";
 import {Button} from 'antd';
 import { deleteTodo, updateTodo } from '../../apis/todos';
+import {EditOutlined} from '@ant-design/icons';
 
 function TodoItem(props) {
     const todo = useSelector(state => selectTodoById(state, props.itemId))
@@ -33,7 +34,8 @@ function TodoItem(props) {
                         <div className='list'> 
                             <span>
                             {todo.text}
-                            <Button type='danger' className='removeBtn' onClick={handleRemove}>X</Button>
+                            <Button type='' className='editBtn' style={{ "background-color": "#fa8c16", borderColor: "#fa8c16"}}><EditOutlined/></Button>
+                            <Button type='danger' className='removeBtn' onClick={handleRemove}>X </Button> 
                             </span>
                         </div>
                 </ul>
