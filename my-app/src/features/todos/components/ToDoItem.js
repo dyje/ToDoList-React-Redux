@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {selectTodoById, UpdateTodo, RemoveToDo} from '../reducers/ToDosSlice';
 import {useSelector, useDispatch} from 'react-redux';
 import "../styles/ToDoItem.css";
-import {Button, Modal} from 'antd';
+import {Button, Modal, message} from 'antd';
 import { deleteTodo, updateTodo } from '../../apis/todos';
 import {EditOutlined} from '@ant-design/icons';
 
@@ -14,7 +14,7 @@ function TodoItem(props) {
     const [isModalVisible, setIsModalVisible] = useState(false);
 
     function handleToggle(){
-        updateTodo(props.itemId, {id: todo.id, text: todo.text, done: !todo.done}).then((response) => {
+        updateTodo(props.itemId, {done: !todo.done}).then((response) => {
         dispatch(UpdateTodo({id:props.itemId, updateTodo: response.data}));
     });
     }
@@ -47,6 +47,8 @@ function TodoItem(props) {
             dispatch(UpdateTodo({id:props.itemId, updateTodo: response.data}));
         });
         event.stopPropagation();
+        message.success("Edit Successful!");
+        setIsModalVisible(false);
     }
 }
     return (
