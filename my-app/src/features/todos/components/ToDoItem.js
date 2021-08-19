@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState} from 'react';
 import {selectTodoById, UpdateTodo, RemoveToDo} from '../reducers/ToDosSlice';
 import {useSelector, useDispatch} from 'react-redux';
 import "../styles/ToDoItem.css";
@@ -11,6 +11,7 @@ function TodoItem(props) {
     const dispatch = useDispatch();
     const doneStatus = todo.done ? "done" : "";
     const [inputTodo, setTodo] = useState("");
+    const [isModalVisible, setIsModalVisible] = useState(false);
 
     function handleToggle(){
         updateTodo(props.itemId, {id: todo.id, text: todo.text, done: !todo.done}).then((response) => {
@@ -24,6 +25,20 @@ function TodoItem(props) {
         })
         event.stopPropagation();
     }
+
+    function handleTodoChange (event){
+        setTodo(event.target.value);
+    }
+
+    const showModal = (event) =>{
+        setIsModalVisible(true);
+        event.stopPropagation();
+    }
+    
+    const handleCancel = (event) => {
+        setIsModalVisible(false);
+    }
+    
     return (
         <div>
             <table>
@@ -32,11 +47,20 @@ function TodoItem(props) {
                         <div className='list'> 
                             <span>
                             {todo.text}
-                            <Button type='' className='editBtn' style={{ "background-color": "#fa8c16", borderColor: "#fa8c16"}} onClick={handleUpdate}><EditOutlined/></Button>
+                            </span>
+                            <span><Button className='editBtn' onClick={showModal} style={{ "background-color": "#fa8c16", borderColor: "#fa8c16"}}><EditOutlined/></Button></span>
+                            <span>
                             <Button type='danger' className='removeBtn' onClick={handleRemove}>X </Button> 
                             </span>
                         </div>
                 </ul>
+                <Modal title="Edit" visible={isModalVisible} onCancel={handleCancel}>
+                    <input
+                    type = "text"
+                    placeholder = {todo.text}
+                    value = {inputTodo}
+                    onChange = {handleTodoChange}></input>
+                </Modal>
             </table>
         </div>
     )
