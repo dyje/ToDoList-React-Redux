@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {useDispatch} from 'react-redux';
 import { createTodo } from '../../apis/todos';
 import {AddToDo} from "..//reducers/ToDosSlice";
-import {Button} from 'antd';
+import {Button, message} from 'antd';
 import "../styles/ToDoForm.css";
 
 function ToDoForm(){
@@ -14,10 +14,16 @@ function ToDoForm(){
     }
 
     function handleInputTextAdd(){
-        createTodo(inputText).then((response)=> {
-            dispatch(AddToDo(response.data));
-        })
-        setText("");
+        if (inputText === ""){
+            message.error("Please fill in To Do item.");
+        }else{
+            createTodo(inputText).then((response)=> {
+                dispatch(AddToDo(response.data));
+            })
+            setText("");
+            message.success("ToDo item added!");
+        }
+        
     }
 
     return (
