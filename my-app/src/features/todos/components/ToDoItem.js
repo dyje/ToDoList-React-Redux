@@ -5,7 +5,7 @@ import {selectTodoById, ToggleToDo, RemoveToDo} from '../reducers/ToDosSlice';
 import {useSelector, useDispatch} from 'react-redux';
 import "../styles/ToDoItem.css";
 import {Button} from 'antd';
-import { deleteTodo } from '../../apis/todos';
+import { deleteTodo, updateTodo } from '../../apis/todos';
 
 function TodoItem(props) {
     const todo = useSelector(state => selectTodoById(state, props.itemId))
@@ -14,12 +14,12 @@ function TodoItem(props) {
     const doneStatus = todo.done ? "done" : "";
 
     function handleToggle(){
-        dispatch(ToggleToDo(props.itemId));
+        updateTodo(props.itemId, {id: todo.id, text: todo.text, done: !todo.done}).then((response) => {
+        dispatch(ToggleToDo({id:props.itemId, updateTodo: response.data}));
+    });
     }
 
     function handleRemove(event){
-        // dispatch(RemoveToDo(props.itemId));
-        // event.stopPropagation();
         deleteTodo(props.itemId).then((response) => {
             dispatch(RemoveToDo(response.data));
         })
@@ -27,7 +27,7 @@ function TodoItem(props) {
     }
     return (
         <div>
-            <table> 
+            <table>
                 <ul className={doneStatus} 
                     onClick={handleToggle}>
                         <div className='list'> 
