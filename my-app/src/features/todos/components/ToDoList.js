@@ -12,14 +12,13 @@ import {BarsOutlined} from '@ant-design/icons';
 function TodoList() {
 
     const dispatch = useDispatch();
-    useEffect (() => {
-        getTodos().then((response) => {
-            dispatch(AddToDos(response.data));
-        })
-    }, [])
+    // useEffect (() => {
+    //     getTodos().then((response) => {
+    //         dispatch(AddToDos(response.data));
+    //     })
+    // }, [])
 
     return (
-        <body>
         <div className="main">
             <div>
                 <h1>To Do List: <BarsOutlined /></h1>
@@ -29,7 +28,6 @@ function TodoList() {
                 <TodoGroup/>
             </div>
         </div>
-        </body>
     )
 }
 
