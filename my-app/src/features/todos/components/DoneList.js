@@ -10,7 +10,6 @@ function DoneList() {
 
     const doneItems = useSelector(doneitems);
     return (
-        <body>
         <div className="main">
             <div>
                 <h1>Items Done: <CarryOutOutlined /></h1>
@@ -20,9 +19,7 @@ function DoneList() {
                 ))
                 }
             </div>
-        
         </div>
-        </body>
     )
 }
 
