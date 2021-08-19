@@ -38,7 +38,17 @@ function TodoItem(props) {
     const handleCancel = (event) => {
         setIsModalVisible(false);
     }
-    
+
+    const handleConfirm = (event) => {
+        if (inputTodo == ''){
+            setIsModalVisible(false);
+        }else{
+            updateTodo(props.itemId, {text: inputTodo}).then((response) => {
+            dispatch(UpdateTodo({id:props.itemId, updateTodo: response.data}));
+        });
+        event.stopPropagation();
+    }
+}
     return (
         <div>
             <table>
@@ -54,7 +64,7 @@ function TodoItem(props) {
                             </span>
                         </div>
                 </ul>
-                <Modal title="Edit" visible={isModalVisible} onCancel={handleCancel}>
+                <Modal title="Edit" visible={isModalVisible} onCancel={handleCancel} onOk={handleConfirm}>
                     <input
                     type = "text"
                     placeholder = {todo.text}
