@@ -1,7 +1,5 @@
 import React from 'react'
 import TodoItem from './ToDoItem'
-import {initialTodoList} from '../../../common/constants/constants';
-import {getAllTodoIds} from '../../../common/utils/utils';
 import {selectTodoIds } from '../reducers/ToDosSlice';
 import {useSelector} from 'react-redux';
 
